@@ -18,7 +18,7 @@ const GameGrid = ({ selectedGenre }: Props) => {
       spacing={3}
     >
       {isLoading &&
-        [1, 2, 3, 4, 5, 6].map((d, i) => (
+        Array.from(Array(10)).map((d, i) => (
           <GameCardContainer key={i}>
             <GameCardSkeleton />
           </GameCardContainer>
