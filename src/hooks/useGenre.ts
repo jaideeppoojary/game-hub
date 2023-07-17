@@ -1,12 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
-import genreService, { Genre } from "../services/genreService";
 import genre from '../data/genres';
-import { QUERY_KEY } from '../services/constants';
+import APIClinet from '../services/api-client';
+import { QUERY_KEY, REST_ENDPOINT } from '../services/constants';
+
+export interface Genre {
+  id: number;
+  name: string;
+  image_background: string;
+}
+
+const apiClient = new APIClinet<Genre>(REST_ENDPOINT.getGenres);
 
 const useGenre = () => {
   return useQuery({
     queryKey: QUERY_KEY.genres,
-    queryFn: genreService.getAll,
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,// 24hrs
     initialData: { count: genre.length, results: genre }
   });

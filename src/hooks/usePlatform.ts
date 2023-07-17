@@ -1,13 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import platforms from "../data/platforms";
-import { FetchResponse } from "../services/api-client";
-import { QUERY_KEY } from "../services/constants";
-import plaformService, { Platform } from "../services/plaformService";
+import APIClinet, { FetchResponse } from "../services/api-client";
+import { QUERY_KEY, REST_ENDPOINT } from "../services/constants";
+
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+const apiClient = new APIClinet<Platform>(REST_ENDPOINT.getPlatform);
 
 const usePlatform = () => {
   return useQuery<FetchResponse<Platform>, Error>({
     queryKey: QUERY_KEY.platform,
-    queryFn: plaformService.getAll,
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,// 24hrs
     initialData: { count: platforms.length, results: platforms}
   });
