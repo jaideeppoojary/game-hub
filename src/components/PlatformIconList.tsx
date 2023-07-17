@@ -1,17 +1,17 @@
-import { HStack, Icon, Text } from "@chakra-ui/react";
-import { Platform } from "../hooks/useGames";
+import { HStack, Icon } from "@chakra-ui/react";
+import { IconType } from 'react-icons';
+import { BsGlobe } from "react-icons/bs";
 import {
-  FaWindows,
-  FaLinux,
-  FaApple,
   FaAndroid,
+  FaApple,
+  FaLinux,
   FaPlaystation,
+  FaWindows,
   FaXbox,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
-import { IconType } from  'react-icons';
+import { Platform } from "../services/plaformService";
 
 interface Props {
   platform: Platform[];
