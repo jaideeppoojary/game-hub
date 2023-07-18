@@ -10,4 +10,4 @@ export const QUERY_KEY = {
   games: ['games'],
 }
 
-export const PAGE_SIZE: number = 6;
+export const PAGE_SIZE: number = 8;
