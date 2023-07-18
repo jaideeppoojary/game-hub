@@ -11,12 +11,12 @@ export interface Platform {
 
 const apiClient = new APIClinet<Platform>(REST_ENDPOINT.getPlatform);
 
-const usePlatform = () => {
+const usePlatforms = () => {
   return useQuery<FetchResponse<Platform>, Error>({
     queryKey: QUERY_KEY.platform,
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,// 24hrs
-    initialData: { count: platforms.length, results: platforms}
+    initialData: platforms,
   });
 }
-export default usePlatform;
+export default usePlatforms;

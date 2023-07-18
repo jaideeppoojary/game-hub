@@ -2,7 +2,7 @@ import { QueryFunctionContext, useInfiniteQuery, useQuery } from "@tanstack/reac
 import { GameQuery } from "../App";
 import APIClinet, { FetchResponse } from "../services/api-client";
 import { PAGE_SIZE, QUERY_KEY, REST_ENDPOINT } from "../services/constants";
-import { Platform } from "./usePlatform";
+import { Platform } from "./usePlatforms";
 export interface Game {
   id: number;
   name: string;
