@@ -3,6 +3,7 @@ import { GameQuery } from "../App";
 import APIClinet, { FetchResponse } from "../services/api-client";
 import { PAGE_SIZE, QUERY_KEY, REST_ENDPOINT } from "../services/constants";
 import { Platform } from "./usePlatforms";
+import ms from "ms";
 export interface Game {
   id: number;
   name: string;
@@ -27,7 +28,7 @@ const useGames = (gameQuery: GameQuery) => {
         page_size: PAGE_SIZE,
       }
     }),
-    staleTime: 30 * 60 * 1000,
+    staleTime: ms('24h'),
     getNextPageParam: (lastPage, allPage) => (lastPage.next ? allPage.length + 1 : undefined),
   });
 }
