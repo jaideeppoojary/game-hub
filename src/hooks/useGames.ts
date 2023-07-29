@@ -1,9 +1,9 @@
-import { QueryFunctionContext, useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { GameQuery } from "../App";
+import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
+import ms from "ms";
 import APIClinet, { FetchResponse } from "../services/api-client";
 import { PAGE_SIZE, QUERY_KEY, REST_ENDPOINT } from "../services/constants";
 import { Platform } from "./usePlatforms";
-import ms from "ms";
+import useGameQueryStore from "../store";
 export interface Game {
   id: number;
   name: string;
@@ -15,7 +15,8 @@ export interface Game {
 
 const apiClient = new APIClinet<Game>(REST_ENDPOINT.getGames);
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore(s => s.gameQuery);
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: [QUERY_KEY.games, gameQuery],
     queryFn: ({ pageParam = 1 }: QueryFunctionContext) => apiClient.getAll({
