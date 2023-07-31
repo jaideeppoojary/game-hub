@@ -4,12 +4,7 @@ import APIClinet from '../services/api-client';
 import { QUERY_KEY, REST_ENDPOINT } from '../services/constants';
 import genres from '../data/genres';
 import ms from 'ms';
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
+import { Genre } from '../entities/Genre';
 
 const apiClient = new APIClinet<Genre>(REST_ENDPOINT.getGenres);
 

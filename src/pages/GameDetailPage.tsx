@@ -1,7 +1,7 @@
 import { Box, Heading, Spinner, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import APIClinet from '../services/api-client';
-import { Game } from '../hooks/useGames';
+import { Game } from "../entities/Game";
 import { REST_ENDPOINT } from '../services/constants';
 import { useQuery } from '@tanstack/react-query';
 import useGame from '../hooks/useGame';
