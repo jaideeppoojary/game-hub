@@ -3,7 +3,7 @@ import ms from "ms";
 import APIClinet, { FetchResponse } from "../services/api-client";
 import { PAGE_SIZE, QUERY_KEY, REST_ENDPOINT } from "../services/constants";
 import useGameQueryStore from "../store";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 const apiClient = new APIClinet<Game>(REST_ENDPOINT.getGames);
 
 const useGames = () => {

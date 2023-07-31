@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
-import { Platform } from "../entities/Platform";
+import Platform from "../entities/Platform";
 import usePlatfom from "../hooks/usePlatfom";
 import useGameQueryStore from "../store";
 
