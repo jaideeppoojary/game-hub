@@ -1,4 +1,12 @@
-import { Box, Button, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+import {
+	Box,
+	Button,
+	GridItem,
+	Heading,
+	SimpleGrid,
+	Spinner,
+	Text,
+} from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import APIClinet from '../services/api-client';
 import { Game } from '../entities/Game';
@@ -21,15 +29,20 @@ const GameDetailPage = () => {
 	if (error || !game) throw error;
 
 	return (
-		<>
-			<Box padding={5}>
+		<SimpleGrid
+			columns={{ base: 1, md: 2 }}
+			spacing={5}
+		>
+			<GridItem>
 				<Heading>{game.name}</Heading>
 				<ExpandableText>{game.description_raw}</ExpandableText>
 				<GameAttribites game={game} />
-				{/* <GameTrailer gameId={game.id} /> */}
+			</GridItem>
+			<GridItem>
+				<GameTrailer gameId={game.id} />
 				<GameScreenshots gameId={game.id} />
-			</Box>
-		</>
+			</GridItem>
+		</SimpleGrid>
 	);
 };
 
